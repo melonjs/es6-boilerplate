@@ -25,6 +25,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+        template: './src/index.html',
         hash: true
     }),
     new CopyWebpackPlugin({
