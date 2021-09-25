@@ -1,5 +1,5 @@
 import * as me from 'melonjs/dist/melonjs.module.js';
-import 'main.css';
+import 'index.css';
 
 import TitleScreen from 'js/stage/title.js';
 import PlayScreen from 'js/stage/play.js';
