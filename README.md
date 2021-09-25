@@ -25,7 +25,7 @@ A simple ES6 Webpack based boilerplate to create games with [melonJS](https://gi
 if everything goes well, on running the dev server for the first time you should see this :
 ![boilerplate-helloworld](https://user-images.githubusercontent.com/4033090/134762171-6e1fac3d-8b41-4665-890b-daa217ba61dc.png)
 
-> Note: when generating the production build, webpack will attempt to filter files under the data folder to only copy final assets and ignore project files (e.g. .ftpp project files from Free Texture Packer). If you find your file being wrongly ignore you can easily add the corresponding extention in the `webpack.config.js` file
+> Note: when generating the production build, webpack will attempt to filter files under the data folder to only copy final assets and ignore project files (e.g. .ftpp project files from Free Texture Packer). If you find your file being wrongly ignore you can easily add the corresponding extention in the (webpack.config.js)[webpack.config.js] file
 
 ## Folder structure
 
