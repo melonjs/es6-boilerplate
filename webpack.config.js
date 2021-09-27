@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require("fs");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 require("@babel/register");
 
 const config = {
@@ -57,6 +58,21 @@ const config = {
                  },
             }
         ]
+    }),
+    new FaviconsWebpackPlugin({
+        logo: './src/favicon/logo.png', // svg works too!
+        mode: 'auto', // optional can be 'webapp', 'light' or 'auto' - 'auto' by default
+        devMode: 'webapp', // optional can be 'webapp' or 'light' - 'light' by default
+        favicons: {
+            appName: 'melonJS ES6 Boilerplate',
+            appDescription: 'My melonJS ES6 Boilerplate Game',
+            developerName: 'melonJS',
+            developerURL: "http://www.melonjs.org", // prevent retrieving from the nearest package.json
+            icons: {
+                coast: false,
+                yandex: false
+            }
+        }
     })
   ],
   resolve: {
