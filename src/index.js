@@ -1,13 +1,26 @@
 import * as me from 'melonjs/dist/melonjs.module.js';
 import 'index.css';
 
+import DebugPanelPlugin from 'js/plugin/debug/debugPanel.js';
 import TitleScreen from 'js/stage/title.js';
 import PlayScreen from 'js/stage/play.js';
 import PlayerEntity from 'js/renderables/player.js';
 
+
 import DataManifest from 'manifest.js';
 
 me.device.onReady(function () {
+
+    // initialize the debug plugin in development mode.
+    if (process.env.NODE_ENV === 'development') {
+        // automatically register the debug panel
+        me.event.subscribe(me.event.VIDEO_INIT, function () {
+            var toggleKey = me.utils.getUriFragment().debugToggleKey;
+            me.utils.function.defer(me.plugin.register, this, DebugPanelPlugin, "debugPanel",
+                toggleKey ? toggleKey.charCodeAt(0) - 32 : undefined
+            );
+        });
+    }
 
     // initialize the display canvas once the device/browser is ready
     if (!me.video.init(1218, 562, {parent : "screen", scale : "auto"})) {
