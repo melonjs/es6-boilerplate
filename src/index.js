@@ -11,21 +11,19 @@ import DataManifest from 'manifest.js';
 
 me.device.onReady(function () {
 
-    // initialize the debug plugin in development mode.
-    if (process.env.NODE_ENV === 'development') {
-        // automatically register the debug panel
-        me.event.subscribe(me.event.VIDEO_INIT, function () {
-            var toggleKey = me.utils.getUriFragment().debugToggleKey;
-            me.utils.function.defer(me.plugin.register, this, DebugPanelPlugin, "debugPanel",
-                toggleKey ? toggleKey.charCodeAt(0) - 32 : undefined
-            );
-        });
-    }
-
     // initialize the display canvas once the device/browser is ready
     if (!me.video.init(1218, 562, {parent : "screen", scale : "auto"})) {
         alert("Your browser does not support HTML5 canvas.");
         return;
+    }
+
+    // initialize the debug plugin in development mode.
+    if (process.env.NODE_ENV === 'development') {
+        // automatically register the debug panel
+        var toggleKey = me.utils.getUriFragment().debugToggleKey;
+        me.utils.function.defer(me.plugin.register, this, DebugPanelPlugin, "debugPanel",
+            toggleKey ? toggleKey.charCodeAt(0) - 32 : undefined
+        );
     }
 
     // Initialize the audio.
