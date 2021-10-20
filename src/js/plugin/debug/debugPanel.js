@@ -3,7 +3,6 @@
 * Copyright (C) 2011 - 2021 Olivier Biot
 * http://www.melonjs.org
 */
-
 import * as me from 'melonjs/dist/melonjs.module.js';
 
 // ensure that debug is defined
@@ -11,22 +10,22 @@ var debug = {};
 
 var DEBUG_HEIGHT = 50;
 
-var Counters = function(name) {
-    this.stats = [];
-    this.reset(this.stats);
-}
-Counters.prototype.reset = function(stats) {
-    var self = this;
-    (stats || Object.keys(this.stats)).forEach(function (stat) {
-        self.stats[stat] = 0;
-    });
-}
-Counters.prototype.inc = function(stat, value) {
-    this.stats[stat] += (value || 1);
-}
-Counters.prototype.get = function(stat) {
-    return this.stats[stat] || 0;
-}
+class Counters {
+    constructor(name) {
+        this.stats = [];
+    }
+    reset() {
+        Object.keys(this.stats).forEach((stat) => {
+            this.stats[stat] = 0;
+        });
+    }
+    inc(stat, value) {
+        this.stats[stat] += (value || 1);
+    }
+    get(stat) {
+        return this.stats[stat] || 0;
+    }
+};
 
 // embedded bitmap font data
 var fontDataSource =
@@ -135,7 +134,7 @@ var fontImageSource = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAY
 
 var DebugPanel = me.Renderable.extend({
     /** @private */
-    init : function (debugToggle) {
+    init : function (debugToggle = me.input.KEY.S) {
         // call the super constructor
         this._super(me.Renderable, "init", [ 0, 0, me.video.renderer.getWidth(), DEBUG_HEIGHT ]);
 
@@ -221,12 +220,10 @@ var DebugPanel = me.Renderable.extend({
         this.area.renderVelocity = new me.Rect(250, 17, size, size);
         this.area.renderQuadTree = new me.Rect(410, 2,  size, size);
 
-        var self = this;
-
         // add some keyboard shortcuts
-        this.debugToggle = debugToggle || me.input.KEY.S;
-        this.keyHandler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode) {
-            if (keyCode === self.debugToggle) {
+        this.debugToggle = debugToggle;
+        this.keyHandler = me.event.subscribe(me.event.KEYDOWN, (action, keyCode) => {
+            if (keyCode === this.debugToggle) {
                 me.plugins.debugPanel.toggle();
             }
         });
@@ -238,8 +235,8 @@ var DebugPanel = me.Renderable.extend({
         this.memoryPositionX = 325 * this.mod;
 
         // resize the panel if the browser is resized
-        me.event.subscribe(me.event.CANVAS_ONRESIZE, function (w) {
-            self.resize(w, DEBUG_HEIGHT);
+        me.event.subscribe(me.event.CANVAS_ONRESIZE, (w) => {
+            this.resize(w, DEBUG_HEIGHT);
         });
 
         //patch patch patch !
@@ -256,9 +253,9 @@ var DebugPanel = me.Renderable.extend({
         var hash = me.utils.getUriFragment();
 
         // add a few new debug flag (if not yet defined)
-        debug.renderHitBox   = debug.renderHitBox   || hash.hitbox || false;
-        debug.renderVelocity = debug.renderVelocity || hash.velocity || false;
-        debug.renderQuadTree = debug.renderQuadTree || hash.quadtree || false;
+        debug.renderHitBox   = hash.hitbox || false;
+        debug.renderVelocity = hash.velocity || false;
+        debug.renderQuadTree = hash.quadtree || false;
 
         var _this = this;
 
@@ -483,8 +480,6 @@ var DebugPanel = me.Renderable.extend({
             me.input.registerPointerEvent("pointerdown", this, this.onClick.bind(this));
             // mark it as visible
             this.visible = true;
-            // force repaint
-            me.game.repaint();
         }
     },
 
@@ -500,8 +495,6 @@ var DebugPanel = me.Renderable.extend({
             me.game.world.removeChild(this, true);
             // mark it as invisible
             this.visible = false;
-            // force repaint
-            me.game.repaint();
         }
     },
 
@@ -526,8 +519,6 @@ var DebugPanel = me.Renderable.extend({
         } else if (this.area.renderQuadTree.contains(e.gameX, e.gameY)) {
             debug.renderQuadTree = !debug.renderQuadTree;
         }
-        // force repaint
-        me.game.repaint();
     },
 
     /** @private */
@@ -699,8 +690,9 @@ var DebugPanel = me.Renderable.extend({
  * @memberOf me
  * @constructor
  * @example
- * // load the debugPanel in your index.html file
- * <script type="text/javascript" src="plugins/debug/debugPanel.js"></script>
+ * // import and activate the panel
+ * import DebugPanelPlugin from 'js/plugin/debug/debugPanel.js';
+ * me.utils.function.defer(me.plugin.register, this, DebugPanelPlugin, "debugPanel");
  */
 var DebugPanelPlugin = me.plugin.Base.extend({
     /** @private */

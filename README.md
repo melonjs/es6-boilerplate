@@ -10,6 +10,7 @@ A simple ES6 Webpack based boilerplate to create games with [melonJS](https://gi
 - Basic Asset Build [management](https://webpack.js.org/plugins/copy-webpack-plugin/)
 - Minification and Transpiling to ES5 using [Babel](https://babeljs.io/docs/setup/#installation)
 - Favicon support using the [favicons Webpack Plugin)](https://www.npmjs.com/package/favicons-webpack-plugin)
+- a [debug plugin](#Debug-plugin) to display stats on number of objects, memory usage, draw time, frame rate, etc...
 
 > Note: ES6 requires melonJS 9.0 or higher.
 > Note: pure ES6 inheritance (as opposed to Jay Inheritance) will require melonJS 10.0 or higher
@@ -62,6 +63,31 @@ public
   - where to add your game assets
 - `public`
   - where the production-ready build files will be copied/generated when using `npm run build`
+
+Debug plugin
+-------------------------------------------------------------------------------
+while in development mode, the boilerplate includes melonJS Debug Plugin
+![debug-panel](https://user-images.githubusercontent.com/4033090/138006717-cf3165a4-a52d-4855-a7c7-16b2a09ed124.png)
+
+the Debug Panel can be displayed/hidden using the "S" key, and will provide the below information :
+* Amount of objects currently active in the current scene
+* Amount of draws operation
+* Amount of body shape (requires to enable the hitbox checkbox)
+* Amount of bounding box
+* Amount of sprites objects
+* Amount of objects currently inactive in the the object pool
+* Heap/memory usage
+* Frame update time (in ms)
+* Frame draw time (in ms)
+* Current fps rate vs target fps
+
+> Note: Heap information requires starting Chrome [with](http://www.chromium.org/developers/how-tos/run-chromium-with-flags) --enable-precise-memory-info
+
+Additionally, using the checkbox in the panel it is also possible to draw :
+* Shape and Bounding box for all objects
+* Current velocity vector
+* Quadtree spatial visualization
+
 
 Questions, need help ?
 -------------------------------------------------------------------------------
