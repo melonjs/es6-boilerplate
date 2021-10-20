@@ -66,10 +66,10 @@ public
 
 Debug plugin
 -------------------------------------------------------------------------------
-while in development mode, the boilerplate includes melonJS Debug Plugin
+In development mode, the boilerplate will automatially register and instantiate the melonJS Debug Plugin
 ![debug-panel](https://user-images.githubusercontent.com/4033090/138006717-cf3165a4-a52d-4855-a7c7-16b2a09ed124.png)
 
-the Debug Panel can be displayed/hidden using the "S" key, and will provide the below information :
+the Debug Panel is hidden by default and can be displayed using the "S" key, it will then provide the below information :
 * Amount of objects currently active in the current scene
 * Amount of draws operation
 * Amount of body shape (requires to enable the hitbox checkbox)
@@ -81,7 +81,7 @@ the Debug Panel can be displayed/hidden using the "S" key, and will provide the 
 * Frame draw time (in ms)
 * Current fps rate vs target fps
 
-> Note: Heap information requires starting Chrome [with](http://www.chromium.org/developers/how-tos/run-chromium-with-flags) --enable-precise-memory-info
+> Note: Heap information requires starting Chrome [with](http://www.chromium.org/developers/how-tos/run-chromium-with-flags) `--enable-precise-memory-info`
 
 Additionally, using the checkbox in the panel it is also possible to draw :
 * Shape and Bounding box for all objects
