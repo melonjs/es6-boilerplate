@@ -694,7 +694,7 @@ var DebugPanel = me.Renderable.extend({
  * import DebugPanelPlugin from 'js/plugin/debug/debugPanel.js';
  * me.utils.function.defer(me.plugin.register, this, DebugPanelPlugin, "debugPanel");
  */
-var DebugPanelPlugin = me.plugin.Base.extend({
+export var DebugPanelPlugin = me.plugin.Base.extend({
     /** @private */
     init : function (debugToggle) {
         // call the super constructor
@@ -741,5 +741,3 @@ var DebugPanelPlugin = me.plugin.Base.extend({
         }
     }
 });
-
-export default DebugPanelPlugin;

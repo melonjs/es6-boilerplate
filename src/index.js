@@ -1,13 +1,12 @@
 import * as me from 'melonjs/dist/melonjs.module.js';
 import 'index.css';
 
-import DebugPanelPlugin from 'js/plugin/debug/debugPanel.js';
 import TitleScreen from 'js/stage/title.js';
 import PlayScreen from 'js/stage/play.js';
 import PlayerEntity from 'js/renderables/player.js';
 
-
 import DataManifest from 'manifest.js';
+
 
 me.device.onReady(function () {
 
@@ -19,11 +18,11 @@ me.device.onReady(function () {
 
     // initialize the debug plugin in development mode.
     if (process.env.NODE_ENV === 'development') {
-        // automatically register the debug panel
-        var toggleKey = me.utils.getUriFragment().debugToggleKey;
-        me.utils.function.defer(me.plugin.register, this, DebugPanelPlugin, "debugPanel",
-            toggleKey ? toggleKey.charCodeAt(0) - 32 : undefined
-        );
+        import('js/plugin/debug/debugPanel.js').then((plugin) => {
+            // automatically register the debug panel
+            me.utils.function.defer(me.plugin.register, this, plugin.DebugPanelPlugin, "debugPanel");
+        });
+
     }
 
     // Initialize the audio.
