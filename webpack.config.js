@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 require("@babel/register");
 
-const config = {
+module.exports = {
   entry: ['@babel/polyfill','./src/index.js'],
   output: {
     path: __dirname + '/public',
@@ -15,8 +15,13 @@ const config = {
     rules : [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
+        exclude: /node_modules\/(?!(melonjs)\/).*/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env']
+            }
+        }
       },
       {
         test: /\.css$/,
@@ -83,7 +88,7 @@ const config = {
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'public'),
+        directory: path.join(__dirname, 'public'),
     },
     compress: true,
     hot: true,
@@ -92,5 +97,3 @@ const config = {
   },
   watch: false
 };
-
-module.exports = config;
