@@ -27,6 +27,6 @@
     "@babel/polyfill": "^7.12.1",
     "css-loader": "^6.4.0",
     "melonjs": "^9.1.2",
-    "style-loader": "^3.3.0"
+    "style-loader": "^3.3.1"
   }
 }
