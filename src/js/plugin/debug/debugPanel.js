@@ -5,9 +5,6 @@
 */
 import * as me from 'melonjs/dist/melonjs.module.js';
 
-// ensure that debug is defined
-var debug = {};
-
 var DEBUG_HEIGHT = 50;
 
 class Counters {
@@ -132,21 +129,21 @@ var fontDataSource =
 
 var fontImageSource = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAdhklEQVR42u1deXMUR5bnG8xH8EfgI+g/h405zCFzI3QLBJYDhgVjQBJICF1ugcVlHCtzXwZx2d6IAYqN9eA/20ji8hh6ltmxHeuI6fEV6zGI3Pxl9at+nZ1ZVdlqYSzqRWSoVZ2dnZWZnfXeL3/vvWnTEkkkTLp37Rz+9JOPBQpe7x18L0v/v/nmmha9Pq7R+yjHjx0Va9asmc7r8DZMJU67prq2vun3YLpuKryubUxQ8L1x6sXpd5zxKLXfVtE7QA3s3Llj+MKF4ayQ8vTpU3Fh+Hz285s31WuI/Fxm25bNrdQOXuPa/fv3BMp3330nHj16JA7u35devbpxDtX7+OMrgoTqUvnyy/tizeqmVt4/ahffi/ZQD3/1PvB2qY2dnfIeZL9xDW0PDPR7+r3pfaB+UF1dcB3voz8oH1+5LPQ6tvYfPfpv9ZlB2e8thn4X1i2+R3u7j4I2BgbeFU4LgDpAN/TBB4fUjV++fCl/fXxcjI8/CcrTp+Pq+sGDB1Tdxsb6lj17BtQkNTXUD62qr6+4dOlCULepsc5rbKybo7crr2fwHi9UT28Xfdi7d08abeOv3gfebmNDXaqpoa61oA+yX42NNWo3unTpYq7uuKivrxmqr6+uQIkzXmgDfaCxwHfodWztD+7Znfb781QcOLDf7/elfL8b6utl3foKlL2D8h7Hc/d44EDsuv19vW4LAAOHD9IN0YDW1axsHUj1Z/zJfyxS/X2ZC8PnxJMnv6p6dbUrvdra6irUvXjxQrBQ8Dn6PD5DE7B//15Pr4t20R4V1K2tWTlUW1v7UlG77PvwF+2jWPqQvnN7VLWJv2izvjo/wcPD54N7XrliWWspj8fxJ37fMSb6e7b2B98b8PA5XJe7gBoP+YsO6tbIflbLfqLs3p1Ko66/8Adj1+3u7nJbAP7AjfsTIBuhiVIdlp3El+E9dP7cR2fEk8f/UvX4jbnc8Ntvb/LwevC93V5fb3ema2eHkFu1OHb0sGr39u0x0dXV4blOFK97e2xE/PB9Vtzwromuzg6vZtmyAj3ko4/OBnWXLFpU0gJ48vhX8fjxL+L8ubNFA25rX/6ggvEYGEipezx//lxQd0z2e3T0CzE68oV4+OAvatx7enZl3nxzbQp1N23a4J08eSJrq4vrnXIsnW4EA6cmWU4sJuStt95M0Xu7dw8ECwDPvrNnTql6+H/JkvyNnTv3Uf6G2XV8hjqGtsL6Yapra9ckvC7aweSMjqSxoMWyZQsLFsC2bVvF9WvX1C/m1KkT4tRJVk6dFKdlWb9unVWZWrp0cRXG4fGv/yfOnj1VNOC29q9d/ZPqH9p/q6VF3ePZs/nFckaO75nTp8Tp0yfV3zNnTotFi94ouO/169d7uM7rXr92VdDCam9vc1sAGDh88PGvvxQM8oYN64ePHTuapQE9evRw9vq1PwU7QGdnR2b16tWq/r59g+Lhw4e0AuV1Xwnr7+9VK35sdFS0tbV61G5K/hL6+/u8hQsXBM97qotBw/th7eIvPi8fMR714ezZM8FAjshfxff//Ifq64OvvhQ93V1p/l20E42MjMi6t8TIrS/8MvKF/7+8jvdtY/bGGwta1WNLto8JMNUJa3/27JnBOJ+Wk0j6wrx580rajXp7uz161GLxOX0Yg4wJQudwY6aOKf0g98yjlYbrfX29apDmzp1b0dW1M011d2xvz8yb93or/uJ/+XpI1pmutzt//use6vG6Lu3yuoUD+XoaA877i++S7c2ZiFks22jB96MtGg/8suke6B5N8uqrr1ZQmTFjxkt0/cSJE4FixxeGi+za1eWRdbZ589vC9aaGcUP6AKEz7W2tvgYuB1X+gjMnjh8TvrY5LubMmunNnv1aVb7+a1W4FiwY/BJvydU+a9bQrFmzKmztBpaFQ7umuif5QMrvxPfw/kK6d+3y4owJsAtgGDqWwb+DW0bUfikTOGPGK61UsDhKWQCvvPJKFbWB104fppvCjeg3sHz58lRnZ6eHgtdNTY0e/W/6Ilyj91E2btzgvfzyy9OLn6FLhzZu/DdBhX8mTrumuqa+8Wt0D3HGZO3aVRXXr19TeIAn/+J/3/qoyfB+64X3h+MrLWubh2hBhQFev4lETeqLJo2NjdNXNTbIxV7vUWlurn3JtR0O8OzZM5C9efPPBUDTagZ4xUUNTcioDYl0qeeEFlKHcM0E9UZtqeWAQ+PA1mHwcJjU1dW0Kr0hpzvcvXtXEEjk0s8ADMrhHQCBCBBCIawjCpVcrSGjajzltTAk0oSgHj1yWEROLt+q+ORekV9Cz72mpgbVoQ+H/l38+c+fCaBQjXV1VuUKMDDgYHSCOs3hWlc41GpGpt4tgkNN8HCUVFevqNo98G468/ArtQju3rktqquXV1B7P//8s8hDwePiu+/+1wjxFmAYVcu86hVLjbsrRw0b6moy9XW1Hi91ddUFyCgQTiCmHIlU12QhpBMCQI/0lH17BxWCarxhTG4AzcrHwb17d1Rn7t+/L1at8j/EsYIVOUBm8eLKip6e7jSu6bZqvsN1c9BZE5SMDnM0MuhDDkq2Qb426e/rCSBqaVIKA+zs0UCZBkzTfSpGpbnmI4ljAv/TZN27dw/wbposo4sXhoUJ4s2DQY9DwSYAXH29PRkyt3184RcGuC0fql2ypAAZ5VYZYSe4d0Jha2pqpu9Bn3J19ueQxBAEbVw1WCVX6tgY3fjt4MYBPFAH31iQNxVJ+zRpr9QJK5Sc66wO4xJsi7Jn90Bah5JtIm39YCB6enYJV9iZy+LFiytgFqPe7bFRwcfqjtwR8IumyQI6akI8YZbSdy+IsO+bm1elBlIpD0hhKleOHzuSVRiK/P4d7e0FKCoWDCGR/3njugCqikK7zKFDB8Vf/5pR/e/tKQT3igSTSyu1csECb+RWWvjgzYiorKxUE7tqVZPX1dWlymuvvRZLUaROYFAIYYwDJQPGRRkbvaUgTtTFDYfehBRAyjQJXTs7hd4u+oCJek+WUyePZ3XYmQvuGzgCTQCHeG+PjYnFixZ5hDYCjTNBvPKvICAozDxsb2vLnj51SqGDUaghCQC7MCSyo2O7uHHDUwsA6K20UOxHxNrkpjZt2qheb9q0yZs5c+b0UhVHDs2ePXtadQTQLEHJH8nFQB0z1UXxvGtFdW2yY0d78MvesWO7cIWoAeIAeEIB4KMWgHx/VP4QODg2OjoqFsyf69GOgsnqY0gcAVM24KcYAqeFEo0auiCRqVRfsEsBNZ1084lMDtLAFcIofz0YQP9mvhDffP0/wQ7A4WEO43I00gQP26DktrZtgurKdoVru3Ih5Pp6S9ySE/DDD9+Lq/JX+M47b3t8svBYmTVrpkeTBeXTh32jIeRyCVBHjkSa6mAh0mNb/jgyWNSxETBXm5FMDk6koF8TLydPHg+26VLhYVvdrVvfEXk8fItwbVfufOL48WOqHDvmF1wzwbkAt/gvnP9PwJcLQ8lmZttMWOwKpFgD7TTNCSGodJ8A/EInEEQQMtfA/MH/KJzNY9b061ukspbRSRcm4dAs39oKINYIyNcFSnaFncsp3ATltvwHHxwMcHsi35jqkumtf15HRmG5hUHEkfV01k2YuaYLNHVo9ibShQvq6AKxukLJrrBzKeBRDPs+GMMD0prRTUYOGlFdmJdUj3++7KKZYFlMJiYVDBxVqquNO0C1NBE//eSKMoNMpIvfq5QCHkURVGwkGVg3xXWXD2FsQTQhPYU+P9HHyjTbufWZUyeznEkDZc03x0aNTJwlSxa2kLa+Y7uZgBAFm0axdE16iAsU64qvm0Epf/cLELgAQKqLPFaOwwqSuogauw1/XO+dOC5NU2lZgOED5fJrOQcPpBnc29uTXrx4cZW+OIE64nGCIhdQVn+sAPr929989DUSSd2w4Y8eTC1MKiYf5prNBAMBA2QQaPVtbVutz5/Dhz9UaCKQs3v37gogjH65qwreI/Nk+/a24fPnzmWx2u/evSN+/PF78dln/6UUNA7U4KagaHJWLtjHdI3/Yom9G8XKjdgRh+gxxxG3KFAqDitIJ2/A1gcbibR7LIL39uwWlVJ5Nj1WCA3k5xb8sQIkFRAwPdYP5q4bJj9vVnV3d6XBoAHzBwwg3VyDKSFt7EyOdDEURoBwEZ8W5aORCxe+kR4BXiAHAd8NyDnALHIQsc7KpWvNbLHguanj6u/292b1gYriFqJw8zUOKBWXddTSslbo2v1IbgeAeVkEG1ctGwYKKUuGw8boo7yWVu+xHRsLlRYUUFWgs0WdjGL+8ImGtj4qO66TPMIRRoZb50AgbHX4PtoBOCmCkxv8YgZRwli50EfkAKZt+DqHbONwC4G4ffPN39UOGcVNnIjgXrl5qb+/f/8+hUQCX8n37RdFfwNyy2FjtavIhQoEFHUePvxKHHr/oDDYizNbgyInFiAIzDW6xicaWryN5FF8rFqX2bRpk/DLRq3415cvXz5U6mCFsXIxUJmMzyXc1dWZ0fF1DtkW70bxuYV0JI5TVK672LyRJir8fMH2WCFcA4JHNxYtFjAe6YSQWgUTiwkOsy2fB5koK1cfKNuOGMUthFIGPaO5uckjrAH2u8nWL1WDb1m7ZtgEG3McxYZEThocHIdp4uLD5qqxT5SVGwbZunALg+NhqV/w42GTrW8zL7FA6LoODOHza5pXCR2J1M8XTEgk6Wv0KANz2IlNY8L3daZJGCNF18KhrdOvQvfTkwOc1TV2ok5xE2YirNyJUORs3MI4x8Nk6xe4dTFwDQukyAWMeWs1NdaLUu4jv5AjEE8+Adw30ITvB0wT5kpm8o3zbWffh45IITY/PdwsJht1A1ub/AQb6oc5GaRcrNwoilpciXM8TLZ+HLcuuWVnyBSlX25dbbUo10K2Ah+YgMaGOmWHw14Mw/eVX17tSi9MCw9MsYaGP9TWrmzhfnrw2+PoIm4Wtj8IIpy0oerK7+F2tytkHEVRM2EILmATdA06y6e+41FjsvVd3Lo4A2tl1XIxqQpVkQOmXJ1R+D5szTAtnNcjdBF18VdHF4NtFG2qLf14Fj59OdvWCzPZXMTKp9O8ku38RDOI5GLrx3Xr8r21Hqsxkwrv5C4A7qwJHDoOvh/FSOH1oggeuFkwc5Yu9bdR7/pVhUSS3a37FZp+oaSIhr0Xl0/n4trtvi03tML66O1F6VblyOEPs0Q8Wb9+XcBjoB1g4cLKyV0ANnyfbEgTGydKC3fx/8PNAsCQ9TwijlABMZMjkbqGTL9OojwTVIxrgZIq67vw6Vw8nV3PO3ZJ64HMRdJhSAGcJS0O0uyVvT/uI6Pz58+d/AWg4/sbNqwbPnBgXxYTwCcrrhbuSvDAApA3WsUoWZ5Nsw8Oa0BRlxoywcAmqBh1UN9l93Jx7T7Cziaw6H766cccM9mfVF2Blmba8IwZr4p8MbuFQdmlPsyZPWtyF4AJ3wdzB88y+X+WT1ZcLbycpA1dsw+2cjkZYRoygTewy112Lxub18T7yzt61LaAKg4fAn44g0dIY03NdPdHRV6Dx6KZ1AVgwvdtTqAuWvhkkTaIxo5JDNOQFfYv6wyfL7RSovh0rmgbOPvQnYoOZ3Ln+mHg2ITctcolJnz/efYX9A9rxilIxZANKsYW7yucZ4ULn84FbYPg8IUfzkCrl9q81H0Kg1LIXVbFWwBySDsdPKugJzU2NrYcOnTQ27x5c+u0511cYNuJOD3alCn/sMZfAJzpW7TN504eYXaVwqeLI+D005kDxwFMkUbI3K2qWpbmuwUwAXktUy5ztyyTatuaosKU2UKakUbOfQNtYeZ4ODiCg7kyRc9oOpjJKaUtupJKJh4mYrLGLYrTzx8X8KhSZf78qsrK+UPqkIkdj8MpB+8988nXJ/Wnn35SrGBovc3NzS/Z6VK+Dx/gWmklZMPCtrmEmePh4HghNJJj3DrlOey9ch50TVTgcEMOOK4eV2WXwvh69WnAsr5b9B2he5RSaDZZUvgbRpfSEUY/pNvK4b6+nmxUXcDNYK+QjyAKUcP0gxm+lYe9F1cACdPuc+TIh2LaVJew+Ho2mjdBvGF0KY4wEsjy/sH9Rn8/E/iCukRMtfnwlVvUwZXc2fhh1JRfACZWsC2+HrFMgA7GpUtxhJFDvFFh5oBGEnTM4WCXwBSuiuj+3Dl+nIOuKSM7d3Zkb9y4EThmEisY8fVgZnEoWA8dB5oUFJ7Lly8GnsQmjZzDu6a6UWHmOBoJuPfzz28WxSB2U1rNBzs+hy4PFYcddE0Z4Rw44PGYICwCTO6O7e1ZjsXrBNK2tm1ZijAmte9UDrotmBT8T3Xydee9pNWJHQ4uoDvngj6EcfRt0TfC2MFxD7qmjOgcOEyQ5sSpJqMICjbAtqZQbAp40ULHmRjFYeHg9HYDToI0n6x0Z023iMsOjkM3m1IShcXzwY+CglEA69qAl7DQcea69nahWA6k+tI40YPCaGqPH+xwdvD29jahyvZ2sbqpacjloGtKio7FR03q8yII5bJf6g9QMEuJCcx95icjCOQLI2GOiK5ZROJk+9BlcHCP8mZyjQnMJ7UcdLPftYQhYFHoWJ6kMV7gy67Du3GyiNgo02GZMKBE7tzZmY4TEzhu6JYXSqKCCq4OAhP6jg8mbZsYLOTLboJ3Y2URYZRpEFT10G92XcZXIl1iAifCJ8oQVBBEB3KyhMZNBAtcQyGyA3Na9KpXrJhjg3fjZBGxhYmj0G9hQkqkLSZwuYI/TEko2GfY5NOyFJlROXCETCgeuAC+eDjWxLOVaFQu3LqoMHE89NtEpFzBH6aUFDBstGAQCFwA/htMKLKhr1+/qk4KEdiQAhcQiRFtEI0qKvSbLTOIrW6kY2MIBEwKZKmRQ6e0aAwb468CkxpNo/K1bNKsdS9bKkAYSwnnRnXjikmBLDVy6JQWH4d/oAaB4/A6WBQWuMCkWWsI4xAxfklbt4VzI9QRUpgKZYuw6zE4xSv8NZNnE1cgS40cOqWFcPiwoIJRgQtMctKSCqVbpTfxwZV3culNXOrqosck1n/VXIEsR3KrKQoHOwQVjCk2YinPQkIIo0tdXfSYxPqvmiuQLpFDXzixkSXLlYhhcnWY8F81KZBxHjW2wBEvrICuTIOD10qbvnQpODhqCAkkabPByxk0wkWBjPOoeeFApLBf84oVy1p6FUHiXwoHILsdUb3IedGWLCLMBjcFgoiT3NnEPo7jhkYKZJxHTdzEUlNGwgIK+pG+xtXkc9pyKanObFlBIusy/z9TBpE4x9nvuObSe5FEDygI8wnwsHqvhEQRUYijDvdSQTAJU13u/4fUJ6ZgjVHH2Yg9mMx0iBDDxuZQOZHHiAlW5nCvKSRtYcKlvP+fCUZOpEyCCdAdKuOGS6HHSFiGLxvcq16HsoQXp4n0YYKR40DBUQpnItN8MqTuUInIkvBnu3171I9EOXorF5FyRCWVogxieaJm8WMkSls3iY2oaso2YpIoJZKHZEtkGgWI2KG0fUSo3rt30Flp4o8Rxam/cL7AscRmg5vEhahqVCJ5SLb6+qF6uUBRkONQD8n2woseUBBY/VwWoTpsa9W3USJqPnjwpfj226/Ff3z6qSAf+ZMOWbJtmj0YxXNmz8xE2esuIdleeIkdUDAn2DrJy1ffRpUXkHxWK+cS+bg4sH+fAHEzzAa3CbfNOaNYmp2pKHvdJSTbCy+uE4Otk36RfBsteIx89SWUwd90gOOGZEvEUeSW2lpdvdJDqcmFVuOPEQxw1GMkLjxsSzDNAyjbHklxQ7IlYhjEMLu+o2OHh+0UFgFe6893l0xcLkmjC+hcLICyKWk0JG5ItkSm5QM7Y3CQfwa57hHyzJS+HMelFNkilUp5pTxGouBhE+Srw8PUhilpNCRuSLYXXhTzt752GM6TPA8NQp4h9BlCnVEK83Xr1g0fOeKnkgE7aOvWLRMypbTYBK1hkK8NHjYljU7EQVwcKE/QVi8nAduoKbewy7FvqcxhDg+bkkYn4iB55m9XhuehgSaPlGVg/yK9OerG2UZdjn3jJI1GRjO9Lg+gbEoanYirybTurWEKeY5Q59jev/n670UOlBN5rkdBvqY4wRwyLoSH8wGUTUmjE3EU7kCJ19Csw9KXQ3jSBe7w6XLsa2MOU+GBJAqJH3NFWNLoRBxFj4IZ5UCpJ124fv2aWLtqVYX+rI469i0HPPwsEkEnwoRSwNAEXL50UTF26Jftcuzraj66JoJOxEFsYVo5EEQcfLIY4OjJzTf9WR117JvIcyJhYVq5E2XAwVdx/rqNKVRtJM1yQMITDSSRiHFLDw/TyvPxdnRsFzdueGoBYFvXM4noz/W4gaTiJoWeaCCJRCLQOKm1Z3TNnWvtvtnV6sFEA1CEBNOIHcjfLyWQVNyk0IVhbetSvkdvfYtLIIlEQpDAKK0dgmhZMNkIMkbwJWzxlZWVfyhHf8KidJrC2qKeayCJRJjEQeP0rR5x/ijRNAYdGUdMsf9c8wVAwqJ06osVYW1BPil3IIkXSkp1mKRE07bYf3G8e9rbt7UULwB7lE5bavd83P0EDnYWlwxfJUPCzLvHdnwbLICQKJ18sVKsYs4WTuDgEsQFYbOZa6bYf6Ue34ZFItFjFYN5xNnCCRxcosRF2EwnfbbYf6Ue34YldDIxj7CA29QCTvwAJ11M27ot9p/mtx+YfVHROMIyfUwkkEQiJaJwHF0zbeu22H9JNI7fiUQRM7kblYvT5mQolwkUPNnbekQmMJdtfTKOb/liJcbwzk5pbg6fzyY+fyUKywTWSvAvzwTGo4eatnUkmgYkbHLaLPfxrZ6KDk6oXAfhizWREgR+fJ9+ciVA1wZS76Yp45dtW9ecNocmM7ECFulAqj9jCwmnh7pNxEEouxdPGkV+fSYzTHfa5MmnXcUEGdsygwWJnYjB/PgX42JNxFHi5MrhZtjWrVuCU7/m5tWiVE8bE2RswxYg4WnrFiYRwEsVlVY95xiCbf23VEILsAUWhs6Uto5DwZ2dHRk4qSazWYLw7F4mFE43w7iD5kTMNROLWKWapVJdPcekg9ig4CTQY4kSJ626zUEzjrmG6ybmjp65NC6L2AYFJ9lCntV2zRw045hrYcwdeP/guR7FR0gCPU6SxNXCg+wiyuSqti4AU1x+G3MHz3VAwv39fR7P+JVAxs9IbMSNz2/ejH3Cp4vJ4dTG3HGFjE36RZILqGzbel0GZEvuo8+1cMougl81d9DURaeZYfJtzB1XyNjEDP74yuUkF1Cpom/X2KZ5xi7u+GFz0NQlKs6fztxxgYxNKeZgNpJu0RQzenkiOeFaOH6d2KahhSMnrxUKHi900NTz62pOnyk4epaLucP1EDIboV9Qu7qnUiKROkBHFpFBSQun7ZrQNa6Fx82va3L6DGPuuOAGutk4NnZLfCv7mnn4IIGDSxFs12PS3q6srKxAwXatZ/ciLTxufl1X5k4cjx9+zEtmIzGIEQfQdHaRSAzBdo0FgJM8bNfQxFHa2rZlnxW6Fid1rH7MG+fsIpGYEHAprOCordolBqAOByN3n/JEZrgBzw8AUWcXIQziRBykFFawjZFDEK9LDEDd46ers8N7/+D+AtxAzw+gzi7Gw88uEpnErdrGyCGI1yUGoO91fCMAjrzrVxUngXADHiyKJM7ZRSITgIKjtuqoJI2mGIBh27ryOh4dCZBDlO//+Y+iYFGJPCMoOGqr5owcHlOQIF5TDMCwbT3wOs5xEtA+opUhShkPFuWafi4RJw08fKs2QbzYqk1Zvk1ex6jL8QV9W+dex3iu4zmvM414MAnOIMJ3JczgCULBPDiEaas2QbyDg3uEKUmjHgMQ2zmFku/p7krzkz8u5HVse67zYBIUsCphBpcJCuaEDNNWbYJ4UUxZvvW0L9jOKSsZ6gJrkJ+dU2q/EbmktnZlC4JEJMzgCUoYIYM7e5ScEVxu66iPbd0UK6iU5zr0CgoSkTCDy74gzM4eE80Izq9x9k4+O9mYSvHCM5SBFobrwAbo+3RmsI3GnkhMwVbMT/WepbOH++IsZgZDD0lmcUI4QD67RrmcPSZLdGYwziw4kyh3LD0nmVUHsWXo0uP+PA9SShzCRKaQlBKHMJFEEjHI/wOfNIUgGtbuFQAAAC10RVh0U29mdHdhcmUAYnkuYmxvb2RkeS5jcnlwdG8uaW1hZ2UuUE5HMjRFbmNvZGVyqAZ/7gAAAABJRU5ErkJggg==";
 
-var DebugPanel = me.Renderable.extend({
+class DebugPanel extends me.Renderable {
     /** @private */
-    init : function (debugToggle = me.input.KEY.S) {
+    constructor(debugToggle = me.input.KEY.S) {
         // call the super constructor
-        this._super(me.Renderable, "init", [ 0, 0, me.video.renderer.getWidth(), DEBUG_HEIGHT ]);
+        super(0, 0, me.video.renderer.getWidth(), DEBUG_HEIGHT );
 
         // enable collision and event detection
         this.isKinematic = false;
 
         // minimum melonJS version expected
-        this.version = "9.0.0";
+        this.version = "10.0.0";
 
-        // to hold the debug options
-        // clickable rect area
-        this.area = {};
+        // to hold the debug CheckBox
+        // zone and status
+        this.checkbox = {};
 
         // Useful counters
         this.counters = new Counters([
@@ -215,14 +212,18 @@ var DebugPanel = me.Renderable.extend({
         fontDataSource = null;
 
         // clickable areas
+        var hash = me.utils.getUriFragment();
         var size = 10 * this.mod;
-        this.area.renderHitBox   = new me.Rect(250, 2,  size, size);
-        this.area.renderVelocity = new me.Rect(250, 17, size, size);
-        this.area.renderQuadTree = new me.Rect(410, 2,  size, size);
+        this.checkbox.renderHitBox = new me.Rect(250, 2,  size, size);
+        this.checkbox.renderHitBox.selected = hash.hitbox || false;
+        this.checkbox.renderVelocity = new me.Rect(250, 17, size, size);
+        this.checkbox.renderVelocity.selected = hash.velocity || false;
+        this.checkbox.renderQuadTree = new me.Rect(410, 2,  size, size);
+        this.checkbox.renderVelocity.selected = hash.quadtree || false;
 
         // add some keyboard shortcuts
         this.debugToggle = debugToggle;
-        this.keyHandler = me.event.subscribe(me.event.KEYDOWN, (action, keyCode) => {
+        this.keyHandler = me.event.on(me.event.KEYDOWN, (action, keyCode) => {
             if (keyCode === this.debugToggle) {
                 me.plugins.debugPanel.toggle();
             }
@@ -235,58 +236,51 @@ var DebugPanel = me.Renderable.extend({
         this.memoryPositionX = 325 * this.mod;
 
         // resize the panel if the browser is resized
-        me.event.subscribe(me.event.CANVAS_ONRESIZE, (w) => {
+        me.event.on(me.event.CANVAS_ONRESIZE, (w) => {
             this.resize(w, DEBUG_HEIGHT);
         });
 
-        //patch patch patch !
-        this.patchSystemFn();
+        // few variables to keep track of time
+        this.frameUpdateStartTime = 0;
+        this.frameDrawStartTime = 0
+        this.frameUpdateTime = 0
+        this.frameDrawTime = 0;
+
+        me.event.on(me.event.GAME_BEFORE_UPDATE, (time) => {
+            this.frameUpdateStartTime = time;
+        });
+        me.event.on(me.event.GAME_AFTER_UPDATE, (time) => {
+            this.frameUpdateTime = time - this.frameUpdateStartTime;
+        });
+
+        me.event.on(me.event.GAME_BEFORE_DRAW, (time) => {
+            this.frameDrawStartTime = time;
+            this.counters.reset();
+        });
+        me.event.on(me.event.GAME_AFTER_DRAW, (time) => {
+            this.frameDrawTime = time - this.frameDrawStartTime;
+        });
+
 
         this.anchorPoint.set(0, 0);
-    },
+
+        //patch patch patch !
+        this.patchSystemFn();
+    }
 
     /**
      * patch system fn to draw debug information
      * @ignore
      */
-    patchSystemFn : function () {
-        var hash = me.utils.getUriFragment();
-
-        // add a few new debug flag (if not yet defined)
-        debug.renderHitBox   = hash.hitbox || false;
-        debug.renderVelocity = hash.velocity || false;
-        debug.renderQuadTree = hash.quadtree || false;
+    patchSystemFn() {
 
         var _this = this;
-
-        // patch me.game.update
-        me.plugin.patch(me.game, "update", function (dt) {
-            var frameUpdateStartTime = window.performance.now();
-
-            this._patched.apply(this, arguments);
-
-            // calculate the update time
-            _this.frameUpdateTime = window.performance.now() - frameUpdateStartTime;
-        });
-
-        // patch me.game.draw
-        me.plugin.patch(me.game, "draw", function () {
-            var frameDrawStartTime = window.performance.now();
-
-            _this.counters.reset();
-
-            this._patched.apply(this, arguments);
-
-            // calculate the drawing time
-            _this.frameDrawTime = window.performance.now() - frameDrawStartTime;
-        });
 
         // patch renderable.js
         me.plugin.patch(me.Renderable, "postDraw", function (renderer) {
 
             // call the original me.Renderable.postDraw function
             this._patched.apply(this, arguments);
-
 
             // increment the sprites counter
             if (typeof this.image !== "undefined") {
@@ -301,7 +295,6 @@ var DebugPanel = me.Renderable.extend({
                 _this.counters.inc("children");
             }
 
-
             // don't do anything else if the panel is hidden
             if (_this.visible) {
 
@@ -312,7 +305,7 @@ var DebugPanel = me.Renderable.extend({
                     && !(this instanceof me.ImageLayer)) {
 
                     // draw the renderable bounding box
-                    if (debug.renderHitBox && this.getBounds().isFinite()) {
+                    if (_this.checkbox.renderHitBox.selected && this.getBounds().isFinite()) {
 
                         if (typeof this.ancestor !== "undefined") {
                             var absolutePosition = this.ancestor.getAbsolutePosition();
@@ -367,7 +360,7 @@ var DebugPanel = me.Renderable.extend({
             this._patched.apply(this, arguments);
 
             // draw the font rectangle
-            if (_this.visible && debug.renderHitBox && this.name !== "debugPanelFont") {
+            if (_this.visible && _this.checkbox.renderHitBox.selected && this.name !== "debugPanelFont") {
                 var bounds = this.getBounds();
 
                 if (typeof this.ancestor !== "undefined") {
@@ -395,7 +388,7 @@ var DebugPanel = me.Renderable.extend({
             this._patched.apply(this, arguments);
 
             // call the original me.Sprite.draw function
-            if (_this.visible && debug.renderHitBox) {
+            if (_this.visible && _this.checkbox.renderHitBox.selected) {
                 if (typeof this.ancestor === "undefined") {
                     renderer.save();
                 }
@@ -414,7 +407,7 @@ var DebugPanel = me.Renderable.extend({
             if (_this.visible) {
 
                 // check if debug mode is enabled
-                if (debug.renderHitBox) {
+                if (_this.checkbox.renderHitBox.selected) {
                     renderer.save();
 
                     renderer.translate(
@@ -447,7 +440,7 @@ var DebugPanel = me.Renderable.extend({
                     renderer.restore();
                 }
 
-                if (debug.renderVelocity && (this.body.vel.x || this.body.vel.y)) {
+                if (_this.checkbox.renderVelocity.selected && (this.body.vel.x || this.body.vel.y)) {
                     var bounds = this.getBounds();
                     var hWidth = bounds.width / 2;
                     var hHeight = bounds.height / 2;
@@ -466,13 +459,13 @@ var DebugPanel = me.Renderable.extend({
             // call the original me.Entity.postDraw function
             this._patched.apply(this, arguments);
         });
-    },
+    }
 
     /**
      * show the debug panel
      * @ignore
      */
-    show : function () {
+    show() {
         if (!this.visible) {
             // add the debug panel to the game world
             me.game.world.addChild(this, Infinity);
@@ -480,14 +473,16 @@ var DebugPanel = me.Renderable.extend({
             me.input.registerPointerEvent("pointerdown", this, this.onClick.bind(this));
             // mark it as visible
             this.visible = true;
+            // force repaint
+            me.game.repaint();
         }
-    },
+    }
 
     /**
      * hide the debug panel
      * @ignore
      */
-    hide : function () {
+    hide() {
         if (this.visible) {
             // release the mouse event for the checkboxes
             me.input.releasePointerEvent("pointerdown", this);
@@ -495,34 +490,38 @@ var DebugPanel = me.Renderable.extend({
             me.game.world.removeChild(this, true);
             // mark it as invisible
             this.visible = false;
+            // force repaint
+            me.game.repaint();
         }
-    },
+    }
 
 
     /** @private */
-    update : function () {
+    update() {
         // update the FPS counter
         me.timer.countFPS();
 
         return this.visible;
-    },
+    }
 
     /** @private */
-    onClick : function (e)  {
+    onClick(e)  {
         // check the clickable areas
-        if (this.area.renderHitBox.contains(e.gameX, e.gameY)) {
-            debug.renderHitBox = !debug.renderHitBox;
-        } else if (this.area.renderVelocity.contains(e.gameX, e.gameY)) {
+        if (this.checkbox.renderHitBox.contains(e.gameX, e.gameY)) {
+            this.checkbox.renderHitBox.selected = !this.checkbox.renderHitBox.selected;
+        } else if (this.checkbox.renderVelocity.contains(e.gameX, e.gameY)) {
             // does nothing for now, since velocity is
             // rendered together with hitboxes (is a global debug flag required?)
-            debug.renderVelocity = !debug.renderVelocity;
-        } else if (this.area.renderQuadTree.contains(e.gameX, e.gameY)) {
-            debug.renderQuadTree = !debug.renderQuadTree;
+            this.checkbox.renderVelocity.selected = !this.checkbox.renderVelocity.selected;
+        } else if (this.checkbox.renderQuadTree.contains(e.gameX, e.gameY)) {
+            this.checkbox.renderQuadTree.selected = !this.checkbox.renderQuadTree.selected;
         }
-    },
+        // force repaint
+        me.game.repaint();
+    }
 
     /** @private */
-    drawQuadTreeNode : function (renderer, node) {
+    drawQuadTreeNode(renderer, node) {
         var bounds = node.bounds;
 
         // draw the current bounds
@@ -541,10 +540,10 @@ var DebugPanel = me.Renderable.extend({
                 this.drawQuadTreeNode(renderer, node.nodes[i]);
             }
         }
-    },
+    }
 
     /** @private */
-    drawQuadTree : function (renderer) {
+    drawQuadTree(renderer) {
         var x = me.game.viewport.pos.x;
         var y = me.game.viewport.pos.y;
 
@@ -553,10 +552,10 @@ var DebugPanel = me.Renderable.extend({
         this.drawQuadTreeNode(renderer, me.game.world.broadphase);
 
         renderer.translate(x, y);
-    },
+    }
 
     /** @private */
-    drawMemoryGraph : function (renderer, endX) {
+    drawMemoryGraph(renderer, endX) {
         if (window.performance && window.performance.memory) {
             var usedHeap  =  me.Math.round(window.performance.memory.usedJSHeapSize / 1048576, 2);
             var totalHeap =  me.Math.round(window.performance.memory.totalJSHeapSize / 1048576, 2);
@@ -574,14 +573,14 @@ var DebugPanel = me.Renderable.extend({
             this.font.draw(renderer, "Heap : ??/?? MB", this.memoryPositionX, 2 * this.mod);
         }
         this.font.draw(renderer, "Pool : " + me.pool.getInstanceCount(), this.memoryPositionX, 10 * this.mod);
-    },
+    }
 
     /** @private */
-    draw : function (renderer) {
+    draw(renderer) {
         renderer.save();
 
         // draw the QuadTree (before the panel)
-        if (debug.renderQuadTree === true) {
+        if (this.checkbox.renderQuadTree.selected === true) {
             this.drawQuadTree(renderer);
         }
 
@@ -601,10 +600,10 @@ var DebugPanel = me.Renderable.extend({
         this.font.draw(renderer, "#draws   : " + me.game.world.drawCount, 5 * this.mod, 10 * this.mod);
 
         // debug checkboxes
-        this.font.draw(renderer, "?hitbox   [" + (debug.renderHitBox ? "x" : " ") + "]",   75 * this.mod, 2 * this.mod);
-        this.font.draw(renderer, "?velocity [" + (debug.renderVelocity ? "x" : " ") + "]", 75 * this.mod, 10 * this.mod);
+        this.font.draw(renderer, "?hitbox   [" + (this.checkbox.renderHitBox.selected ? "x" : " ") + "]",   75 * this.mod, 2 * this.mod);
+        this.font.draw(renderer, "?velocity [" + (this.checkbox.renderVelocity.selected ? "x" : " ") + "]", 75 * this.mod, 10 * this.mod);
 
-        this.font.draw(renderer, "?QuadTree [" + (debug.renderQuadTree ? "x" : " ") + "]", 150 * this.mod, 2 * this.mod);
+        this.font.draw(renderer, "?QuadTree [" + (this.checkbox.renderQuadTree.selected ? "x" : " ") + "]", 150 * this.mod, 2 * this.mod);
 
         // draw the update duration
         this.font.draw(renderer, "Update : " + this.frameUpdateTime.toFixed(2) + " ms", 225 * this.mod, 2 * this.mod);
@@ -645,17 +644,16 @@ var DebugPanel = me.Renderable.extend({
         this.font.draw(renderer, fps_str, endX, 2 * this.mod);
 
         renderer.restore();
-    },
+    }
 
     /** @private */
-    onDestroyEvent : function () {
+    onDestroyEvent() {
         // hide the panel
         this.hide();
         // unbind keys event
         me.input.unbindKey(this.toggleKey);
-        me.event.unsubscribe(this.keyHandler);
     }
-});
+};
 
 
 /**
@@ -690,22 +688,21 @@ var DebugPanel = me.Renderable.extend({
  * @memberOf me
  * @constructor
  * @example
- * // import and activate the panel
- * import DebugPanelPlugin from 'js/plugin/debug/debugPanel.js';
- * me.utils.function.defer(me.plugin.register, this, DebugPanelPlugin, "debugPanel");
+ * // load the debugPanel in your index.html file
+ * <script type="text/javascript" src="plugins/debug/debugPanel.js"></script>
  */
-export var DebugPanelPlugin = me.plugin.Base.extend({
+export class DebugPanelPlugin extends me.plugin.Base {
     /** @private */
-    init : function (debugToggle) {
+    constructor(debugToggle) {
         // call the super constructor
-        this._super(me.plugin.Base, "init");
+        super();
         this.panel = new DebugPanel(debugToggle);
 
         // if "#debug" is present in the URL
         if (me.utils.getUriFragment().debug === true) {
             this.show();
         } // else keep it hidden
-    },
+    }
 
     /**
      * show the debug panel
@@ -713,9 +710,9 @@ export var DebugPanelPlugin = me.plugin.Base.extend({
      * @function
      * @memberOf debugPanel
      */
-    show : function () {
+    show() {
         this.panel.show();
-    },
+    }
 
     /**
      * hide the debug panel
@@ -723,9 +720,9 @@ export var DebugPanelPlugin = me.plugin.Base.extend({
      * @function
      * @memberOf debugPanel
      */
-    hide : function () {
+    hide() {
         this.panel.hide();
-    },
+    }
 
     /**
      * toggle the debug panel visibility state
@@ -733,11 +730,11 @@ export var DebugPanelPlugin = me.plugin.Base.extend({
      * @function
      * @memberOf debugPanel
      */
-    toggle : function () {
+    toggle() {
         if (this.panel.visible) {
             this.panel.hide();
         } else {
             this.panel.show();
         }
     }
-});
+};

@@ -3,7 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/melonjs/es6-boilerplate/blob/master/LICENSE)
 
 A simple ES6 Webpack based boilerplate to create games with [melonJS](https://github.com/melonjs/melonJS), built with :
-- [ECMAScript 6](http://es6-features.org) structure and semantic (using melonJS 9.0 or higher)
+- [melonJS 2](https://github.com/melonjs/melonJS)
+- [ECMAScript 6](http://es6-features.org) structure and semantic
 - [Webpack](https://webpack.js.org/guides)
 - [Webpack Dev Server](https://github.com/webpack/webpack-dev-server) plugin for local development
 - [Hot Reloading](https://webpack.js.org/concepts/hot-module-replacement) dev server
@@ -11,9 +12,6 @@ A simple ES6 Webpack based boilerplate to create games with [melonJS](https://gi
 - Minification and Transpiling to ES5 using [Babel](https://babeljs.io/docs/setup/#installation)
 - Favicon support using the [favicons Webpack Plugin)](https://www.npmjs.com/package/favicons-webpack-plugin)
 - a [debug plugin](#Debug-plugin) to display stats on number of objects, memory usage, draw time, frame rate, etc...
-
-> Note: ES6 requires melonJS 9.0 or higher.
-> Note: pure ES6 inheritance (as opposed to Jay Inheritance) will require melonJS 10.0 or higher
 
 ## Prerequisites
 

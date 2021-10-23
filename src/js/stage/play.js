@@ -1,11 +1,11 @@
 import * as me from 'melonjs/dist/melonjs.module.js';
 
 // Note : Jay Inheritance to be replaced with standard ES6 inheritance in melonjs 10+
-export var PlayScreen = me.Stage.extend({
+class PlayScreen extends me.Stage {
     /**
      *  action to perform on state change
      */
-    onResetEvent: function() {
+    onResetEvent() {
         // add a gray background to the default Stage
         me.game.world.addChild(new me.ColorLayer("background", "#202020"));
 
@@ -18,6 +18,6 @@ export var PlayScreen = me.Stage.extend({
             text : "Hello World !"
         }));
     }
-})
+};
 
 export default PlayScreen;
