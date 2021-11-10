@@ -1,7 +1,6 @@
-import * as me from 'melonjs/dist/melonjs.module.js';
+import { Entity } from 'melonjs/dist/melonjs.module.js';
 
- // Note : Jay Inheritance to be replaced with standard ES6 inheritance in melonjs 10+
-class PlayerEntity extends me.Entity {
+class PlayerEntity extends Entity {
 
     /**
      * constructor

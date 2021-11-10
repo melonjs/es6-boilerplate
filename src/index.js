@@ -8,7 +8,7 @@ import PlayerEntity from 'js/renderables/player.js';
 import DataManifest from 'manifest.js';
 
 
-me.device.onReady(function () {
+me.device.onReady(() => {
 
     // initialize the display canvas once the device/browser is ready
     if (!me.video.init(1218, 562, {parent : "screen", scale : "auto"})) {

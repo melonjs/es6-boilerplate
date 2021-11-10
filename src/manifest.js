@@ -5,12 +5,12 @@ const DataManifest = [
     /* Bitmap Text */
     {
         name: "PressStart2P",
-        type:"image",
-        src: "./data/fnt/PressStart2P.png"
+        type: "image",
+        src:  "./data/fnt/PressStart2P.png"
     },
     {
         name: "PressStart2P",
-        type:"binary",
+        type: "binary",
         src: "./data/fnt/PressStart2P.fnt"
     }
 ];
