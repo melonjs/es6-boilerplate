@@ -15,7 +15,9 @@ A simple ES6 Webpack based boilerplate to create games with [melonJS](https://gi
 
 ## Prerequisites
 
-- [NodeJS](https://nodejs.org/en/)
+Ensure you have [Node.js](http://nodejs.org/) installed, then install all the build dependencies in the folder where you cloned the repository :
+
+    $ [sudo] npm install
 
 ## Usage
 
