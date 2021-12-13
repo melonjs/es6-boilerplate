@@ -325,10 +325,6 @@ class DebugPanel extends me.Renderable {
                         renderer.setColor("green");
                         renderer.stroke(this.getBounds());
 
-                        if (typeof this.ancestor !== "undefined") {
-                            renderer.restore();
-                        }
-
                         // the sprite mask if defined
                         if (typeof this.mask !== "undefined") {
                             renderer.setColor("orange");
@@ -349,6 +345,10 @@ class DebugPanel extends me.Renderable {
                                 _this.counters.inc("shapes");
                             }
                             renderer.translate(-bounds.x, -bounds.y);
+                        }
+
+                        if (typeof this.ancestor !== "undefined") {
+                            renderer.restore();
                         }
                     }
                 }
