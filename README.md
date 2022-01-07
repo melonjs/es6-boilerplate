@@ -10,7 +10,7 @@ A simple ES6 Webpack based boilerplate to create games with [melonJS](https://gi
 - [Hot Reloading](https://webpack.js.org/concepts/hot-module-replacement) dev server
 - Basic Asset Build [management](https://webpack.js.org/plugins/copy-webpack-plugin/)
 - Minification and Transpiling to ES5 using [Babel](https://babeljs.io/docs/setup/#installation)
-- Favicon support using the [favicons Webpack Plugin)](https://www.npmjs.com/package/favicons-webpack-plugin)
+- Favicon support using the [favicons Webpack Plugin](https://www.npmjs.com/package/favicons-webpack-plugin)
 - a [debug plugin](#Debug-plugin) to display stats on number of objects, memory usage, draw time, frame rate, etc...
 
 ## Prerequisites
