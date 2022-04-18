@@ -138,9 +138,6 @@ class DebugPanel extends me.Renderable {
         // enable collision and event detection
         this.isKinematic = false;
 
-        // minimum melonJS version expected
-        this.version = "10.0.0";
-
         // to hold the debug CheckBox
         // zone and status
         this.checkbox = {};
@@ -696,6 +693,10 @@ export class DebugPanelPlugin extends me.plugin.Base {
     constructor(debugToggle) {
         // call the super constructor
         super();
+
+        // minimum melonJS version expected
+        this.version = "10.0.0";
+
         this.panel = new DebugPanel(debugToggle);
 
         // if "#debug" is present in the URL
