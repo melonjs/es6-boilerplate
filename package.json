@@ -26,7 +26,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "css-loader": "^6.7.1",
-    "melonjs": "^10.9.0",
+    "melonjs": "^10.10.0",
     "style-loader": "^3.3.1"
   }
 }
