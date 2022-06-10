@@ -1,4 +1,14 @@
-import * as me from 'melonjs/dist/melonjs.module.js';
+import {
+    audio,
+    loader,
+    state,
+    device,
+    video,
+    utils,
+    plugin,
+    pool
+} from 'melonjs/dist/melonjs.module.js';
+
 import 'index.css';
 
 import TitleScreen from 'js/stage/title.js';
@@ -8,39 +18,39 @@ import PlayerEntity from 'js/renderables/player.js';
 import DataManifest from 'manifest.js';
 
 
-me.device.onReady(() => {
+device.onReady(() => {
 
     // initialize the display canvas once the device/browser is ready
-    if (!me.video.init(1218, 562, {parent : "screen", scale : "auto"})) {
+    if (!video.init(1218, 562, {parent : "screen", scale : "auto"})) {
         alert("Your browser does not support HTML5 canvas.");
         return;
     }
 
     // initialize the debug plugin in development mode.
     if (process.env.NODE_ENV === 'development') {
-        import('js/plugin/debug/debugPanel.js').then((plugin) => {
+        import('js/plugin/debug/debugPanel.js').then((debugPlugin) => {
             // automatically register the debug panel
-            me.utils.function.defer(me.plugin.register, this, plugin.DebugPanelPlugin, "debugPanel");
+            utils.function.defer(plugin.register, this, debugPlugin.DebugPanelPlugin, "debugPanel");
         });
 
     }
 
     // Initialize the audio.
-    me.audio.init("mp3,ogg");
+    audio.init("mp3,ogg");
 
     // allow cross-origin for image/texture loading
-    me.loader.crossOrigin = "anonymous";
+    loader.crossOrigin = "anonymous";
 
     // set and load all resources.
-    me.loader.preload(DataManifest, function() {
+    loader.preload(DataManifest, function() {
         // set the user defined game stages
-        me.state.set(me.state.MENU, new TitleScreen());
-        me.state.set(me.state.PLAY, new PlayScreen());
+        state.set(state.MENU, new TitleScreen());
+        state.set(state.PLAY, new PlayScreen());
 
         // add our player entity in the entity pool
-        me.pool.register("mainPlayer", PlayerEntity);
+        pool.register("mainPlayer", PlayerEntity);
 
         // Start the game.
-        me.state.change(me.state.PLAY);
+        state.change(state.PLAY);
     });
 });
