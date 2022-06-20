@@ -1,12 +1,12 @@
 {
   "name": "melonjs-es6-boilerplate",
-  "version": "1.0.0",
+  "version": "1.12.0",
   "main": "index.js",
   "author": "Olivier Biot",
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.17.10",
-    "@babel/core": "^7.18.2",
+    "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.18.2",
     "@babel/register": "^7.17.7",
     "babel-loader": "^8.2.5",
@@ -16,7 +16,7 @@
     "fs": "^0.0.1-security",
     "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.73.0",
-    "webpack-cli": "^4.9.2",
+    "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.2"
   },
   "scripts": {
@@ -26,7 +26,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "css-loader": "^6.7.1",
-    "melonjs": "^10.10.0",
+    "melonjs": "^10.12.0",
     "style-loader": "^3.3.1"
   }
 }
