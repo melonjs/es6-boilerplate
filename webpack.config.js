@@ -76,7 +76,8 @@ module.exports = {
             developerURL: "http://www.melonjs.org", // prevent retrieving from the nearest package.json
             icons: {
                 coast: false,
-                yandex: false
+                yandex: false,
+                appleStartup: false
             }
         }
     })
