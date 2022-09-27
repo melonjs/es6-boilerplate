@@ -1,6 +1,6 @@
 {
   "name": "melonjs-es6-boilerplate",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "main": "index.js",
   "author": "Olivier Biot",
   "license": "MIT",
@@ -29,7 +29,7 @@
   "dependencies": {
     "core-js": "^3.25.3",
     "css-loader": "^6.7.1",
-    "melonjs": "^13.3.0",
+    "melonjs": "^13.4.0",
     "style-loader": "^3.3.1"
   }
 }
