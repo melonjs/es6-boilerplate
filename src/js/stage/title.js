@@ -1,4 +1,4 @@
-import { Stage } from 'melonjs/dist/melonjs.module.js';
+import { Stage } from 'melonjs';
 
 class TitleScreen extends Stage {
     /**

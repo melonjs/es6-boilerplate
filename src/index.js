@@ -7,7 +7,7 @@ import {
     utils,
     plugin,
     pool
-} from 'melonjs/dist/melonjs.module.js';
+} from 'melonjs';
 
 import 'index.css';
 

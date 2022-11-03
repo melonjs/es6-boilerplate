@@ -1,4 +1,4 @@
-import { Entity } from 'melonjs/dist/melonjs.module.js';
+import { Entity } from 'melonjs';
 
 class PlayerEntity extends Entity {
 
