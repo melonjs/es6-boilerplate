@@ -29,7 +29,7 @@
   "dependencies": {
     "core-js": "^3.27.0",
     "css-loader": "^6.7.3",
-    "melonjs": "^14.1.2",
+    "melonjs": "^14.2.0",
     "style-loader": "^3.3.1"
   }
 }
