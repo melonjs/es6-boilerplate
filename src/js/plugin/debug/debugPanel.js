@@ -1,7 +1,9 @@
 /*
-* MelonJS Game Engine
-* Copyright (C) 2011 - 2021 Olivier Biot
-* http://www.melonjs.org
+ * melonJS Game Engine
+ * http://www.melonjs.org
+ * melonjs is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ * @copyright (C) 2011 - 2023 Olivier Biot (AltByte Pte Ltd)
 */
 import * as me from 'melonjs';
 
