@@ -1,7 +1,7 @@
 {
   "name": "melonjs-es6-boilerplate",
-  "version": "1.23.0",
-  "main": "index.js",
+  "version": "1.23.1",
+  "main": "src/index.js",
   "author": "Olivier Biot",
   "license": "MIT",
   "devDependencies": {
