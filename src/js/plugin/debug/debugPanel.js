@@ -172,6 +172,9 @@ class DebugPanel extends me.Renderable {
         // set the object entity name
         this.name = "debugPanel";
 
+        // the debug panel version
+        this.version = "2.14.1";
+
         // persistent
         this.isPersistent = true;
 
@@ -299,7 +302,7 @@ class DebugPanel extends me.Renderable {
 
                 // omit following object as they are patched later through different methods
                 // XXX TODO: make this patched method more generic at Renderable level
-                if (!(this instanceof me.Entity) && !(this instanceof me.Text) &&
+                if (!(this instanceof me.Entity) && !(this.ancestor instanceof me.Entity) && !(this instanceof me.Text) &&
                     !(this instanceof me.BitmapText) && !(this instanceof me.Camera2d)
                     && !(this instanceof me.ImageLayer)) {
 
@@ -320,7 +323,6 @@ class DebugPanel extends me.Renderable {
                             }
                         }
 
-                        // draw the renderable bounds
                         renderer.setColor("green");
                         renderer.stroke(this.getBounds());
 
@@ -362,20 +364,21 @@ class DebugPanel extends me.Renderable {
             if (_this.visible && _this.checkbox.renderHitBox.selected && this.name !== "debugPanelFont") {
                 var bounds = this.getBounds();
 
+               
+
                 if (typeof this.ancestor !== "undefined") {
                     var ax = this.anchorPoint.x * bounds.width,
                         ay = this.anchorPoint.y * bounds.height;
                     // translate back as the bounds position
                     // is already adjusted to the anchor Point
-                    renderer.translate(ax, ay);
-                } else {
                     renderer.save();
+                    renderer.translate(ax, ay);
                 }
 
                 renderer.setColor("green");
                 renderer.stroke(bounds);
 
-                if (typeof this.ancestor === "undefined") {
+                if (typeof this.ancestor !== "undefined") {
                     renderer.restore();
                 }
             }
@@ -395,7 +398,7 @@ class DebugPanel extends me.Renderable {
                     renderer.save();
 
                     // if this object of this renderable parent is not the root container
-                    if (!this.ancestor.root && this.ancestor.floating) {
+                    if (!this.root && !this.ancestor.root && this.ancestor.floating) {
                         renderer.translate(
                             -absolutePosition.x,
                             -absolutePosition.y
@@ -405,10 +408,6 @@ class DebugPanel extends me.Renderable {
 
                 renderer.setColor("green");
                 renderer.stroke(bounds);
-
-                if (typeof this.ancestor !== "undefined") {
-                    renderer.restore();
-                }
             }
         });
 
@@ -419,24 +418,37 @@ class DebugPanel extends me.Renderable {
 
                 // check if debug mode is enabled
                 if (_this.checkbox.renderHitBox.selected) {
+
                     renderer.save();
 
-                    renderer.translate(
-                        -this.pos.x - this.body.getBounds().x - this.ancestor.getAbsolutePosition().x,
-                        -this.pos.y - this.body.getBounds().y - this.ancestor.getAbsolutePosition().y
-                    );
 
+                    if (typeof this.ancestor !== "undefined") {
+                        var absolutePosition = this.ancestor.getAbsolutePosition();
+
+                        // if this object of this renderable parent is not the root container
+                        if (!this.root && !this.ancestor.root && this.ancestor.floating) {
+                            renderer.translate(
+                                -absolutePosition.x,
+                                -absolutePosition.y
+                            );
+                        }
+                    }
+        
                     if (this.renderable instanceof me.Renderable) {
-                        renderer.translate(
-                            -this.anchorPoint.x * this.body.getBounds().width,
-                            -this.anchorPoint.y * this.body.getBounds().height
-                        );
+                        renderer.setColor("green");
+                        renderer.stroke(this.renderable.getBounds());
                     }
 
                     renderer.translate(
-                        this.pos.x + this.ancestor.getAbsolutePosition().x,
-                        this.pos.y + this.ancestor.getAbsolutePosition().y
+                        this.body.getBounds().x,
+                        this.body.getBounds().y
                     );
+
+                    renderer.translate(
+                        -this.anchorPoint.x * this.body.getBounds().width,
+                        -this.anchorPoint.y * this.body.getBounds().height
+                    );
+        
 
                     // draw the bounding rect shape
                     renderer.setColor("orange");
@@ -448,11 +460,13 @@ class DebugPanel extends me.Renderable {
                         renderer.stroke(shape);
                         _this.counters.inc("shapes");
                     }
+
                     renderer.restore();
+
                 }
 
                 if (_this.checkbox.renderVelocity.selected && (this.body.vel.x || this.body.vel.y)) {
-                    var bounds = this.getBounds();
+                    var bounds = this.body.getBounds();
                     var hWidth = bounds.width / 2;
                     var hHeight = bounds.height / 2;
 
@@ -709,7 +723,7 @@ export class DebugPanelPlugin extends me.plugin.Base {
         super();
 
         // minimum melonJS version expected
-        this.version = "10.6.0";
+        this.version = "14.4.1";
 
         this.panel = new DebugPanel(debugToggle);
 
