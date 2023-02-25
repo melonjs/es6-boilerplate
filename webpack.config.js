@@ -81,6 +81,11 @@ module.exports = {
 	resolve: {
 		modules: [path.resolve("./src"), path.resolve("./node_modules")],
 	},
+	performance: {
+		hints: 'warning',
+		maxEntrypointSize: 512000,
+		maxAssetSize: 512000
+	},
 	devServer: {
 		static: {
 			directory: path.join(__dirname, "public"),
