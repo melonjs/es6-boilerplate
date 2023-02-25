@@ -82,9 +82,9 @@ module.exports = {
 		modules: [path.resolve("./src"), path.resolve("./node_modules")],
 	},
 	performance: {
-		hints: 'warning',
-		maxEntrypointSize: 512000,
-		maxAssetSize: 512000
+		hints: false,
+		maxEntrypointSize: 524288,
+		maxAssetSize: 524288
 	},
 	devServer: {
 		static: {
