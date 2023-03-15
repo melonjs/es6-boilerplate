@@ -44,7 +44,7 @@ module.exports = {
 						const data = await fs.promises.readFile(resourcePath);
 
 						// add your custom extension here if not listed
-						var texture = /\.(jpe?g|gif|png|svg|heic|pkm|pvr)$/;
+						var texture = /\.(jpe?g|gif|png|svg|heic|avif|webp|pkm|pvr)$/;
 						var fnt = /\.(woff|woff2|ttf|fnt)$/;
 						var map = /\.(tmx|tmj|tsx|tsj)$/;
 						var audio = /\.(wav|mp3|mpeg|opus|ogg|oga|wav|aac|caf|m4a|m4b|mp4|weba|webm|dolby|flac)$/;
