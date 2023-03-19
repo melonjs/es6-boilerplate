@@ -12,7 +12,7 @@ A simple ES6 Webpack based boilerplate to create games with [melonJS](https://gi
 - Basic Asset Build [management](https://webpack.js.org/plugins/copy-webpack-plugin/)
 - Minification and Transpiling to ES5 using [Babel](https://babeljs.io/docs/setup/#installation)
 - Favicon support using the [favicons Webpack Plugin](https://www.npmjs.com/package/favicons-webpack-plugin)
-- a [debug plugin](#Debug-plugin) to display stats on number of objects, memory usage, draw time, frame rate, etc...
+- melonJS [debug plugin](https://github.com/melonjs/debug-plugin) to display stats on number of objects, memory usage, draw time, frame rate, etc...
 
 ## Prerequisites
 
@@ -67,27 +67,9 @@ public
 
 Debug plugin
 -------------------------------------------------------------------------------
-In development mode, the boilerplate will automatically register and instantiate the melonJS Debug Plugin
-![debug-panel](https://user-images.githubusercontent.com/4033090/138006717-cf3165a4-a52d-4855-a7c7-16b2a09ed124.png)
+The boilerplate include the melonJS plugin, and will automatically import and instantiate it when running under a development environement.
 
-the Debug Panel is hidden by default and can be displayed using the "S" key, it will then provide the below information :
-* Amount of objects currently active in the current scene
-* Amount of draws operation
-* Amount of body shape (requires to enable the hitbox checkbox)
-* Amount of bounding box
-* Amount of sprites objects
-* Amount of objects currently inactive in the the object pool
-* Heap/memory usage
-* Frame update time (in ms)
-* Frame draw time (in ms)
-* Current fps rate vs target fps
-
-> Note: Heap information requires starting Chrome [with](http://www.chromium.org/developers/how-tos/run-chromium-with-flags) `--enable-precise-memory-info`
-
-Additionally, using the checkbox in the panel it is also possible to draw :
-* Shape and Bounding box for all objects
-* Current velocity vector
-* Quadtree spatial visualization
+the Debug Panel is hidden by default and can be displayed using the "S" key, see [here](https://github.com/melonjs/debug-plugin/blob/main/README.md) for more details about the plugin.
 
 
 Questions, need help ?

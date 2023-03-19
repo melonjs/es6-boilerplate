@@ -25,6 +25,7 @@
     "build": "webpack --mode=production --config webpack.config.js"
   },
   "dependencies": {
+    "@melonjs/debug-plugin": "^14.4.7",
     "core-js": "^3.29.1",
     "css-loader": "^6.7.3",
     "melonjs": "^15.0.0",

@@ -28,11 +28,10 @@ device.onReady(() => {
 
     // initialize the debug plugin in development mode.
     if (process.env.NODE_ENV === 'development') {
-        import('js/plugin/debug/debugPanel.js').then((debugPlugin) => {
+        import("@melonjs/debug-plugin").then((debugPlugin) => {
             // automatically register the debug panel
             utils.function.defer(plugin.register, this, debugPlugin.DebugPanelPlugin, "debugPanel");
         });
-
     }
 
     // Initialize the audio.
