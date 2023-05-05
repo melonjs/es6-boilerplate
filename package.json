@@ -25,10 +25,10 @@
     "build": "webpack --mode=production --config webpack.config.js"
   },
   "dependencies": {
-    "@melonjs/debug-plugin": "^14.5.1",
+    "@melonjs/debug-plugin": "^14.5.2",
     "core-js": "^3.30.1",
     "css-loader": "^6.7.3",
-    "melonjs": "^15.1.4",
+    "melonjs": "^15.1.5",
     "style-loader": "^3.3.2"
   }
 }
