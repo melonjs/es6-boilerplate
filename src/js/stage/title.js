@@ -1,4 +1,4 @@
-import { Stage } from 'melonjs';
+import { Stage } from "melonjs";
 
 class TitleScreen extends Stage {
     /**

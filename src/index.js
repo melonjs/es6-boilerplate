@@ -7,15 +7,15 @@ import {
     utils,
     plugin,
     pool
-} from 'melonjs';
+} from "melonjs";
 
-import 'index.css';
+import "index.css";
 
-import TitleScreen from 'js/stage/title.js';
-import PlayScreen from 'js/stage/play.js';
-import PlayerEntity from 'js/renderables/player.js';
+import TitleScreen from "js/stage/title.js";
+import PlayScreen from "js/stage/play.js";
+import PlayerEntity from "js/renderables/player.js";
 
-import DataManifest from 'manifest.js';
+import DataManifest from "manifest.js";
 
 
 device.onReady(() => {

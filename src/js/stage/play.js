@@ -1,4 +1,4 @@
-import { Stage, game, ColorLayer, BitmapText  } from 'melonjs';
+import { Stage, game, ColorLayer, BitmapText  } from "melonjs";
 
 class PlayScreen extends Stage {
     /**
