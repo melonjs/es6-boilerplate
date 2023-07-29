@@ -94,6 +94,5 @@ module.exports = {
 		hot: true,
 		port: 9000,
 		open: true,
-	},
-	watch: false,
+	}
 };
