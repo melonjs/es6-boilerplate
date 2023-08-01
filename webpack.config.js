@@ -80,6 +80,10 @@ module.exports = {
 	],
 	resolve: {
 		modules: [path.resolve("./src"), path.resolve("./node_modules")],
+		fallback: {
+			"path" : false,
+			"fs": false 
+		}
 	},
 	performance: {
 		hints: false,
