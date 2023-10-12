@@ -3,11 +3,12 @@ import vitePluginFaviconsInject from "vite-plugin-favicons-inject";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig({
-  root: "",
+  base: "",
   build: {
-    // Relative to the root
+    assetsDir: "assets",
+    emptyOutDir: true,
+    manifest: true,
     outDir: "public",
-    assetsDir: "build",
     target: "es2015"
   },
   plugins: [
