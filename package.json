@@ -1,16 +1,16 @@
 {
   "name": "melonjs-es6-boilerplate",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "main": "src/index.js",
   "type": "module",
   "author": "Olivier Biot",
   "license": "MIT",
   "devDependencies": {
-    "vite": "^5.0.12",
+    "vite": "^5.2.8",
     "vite-plugin-favicons-inject": "^2.2.0",
     "vite-plugin-html": "^3.2.2",
-    "vite-plugin-static-copy": "^1.0.1",
-    "sass": "^1.70.0"
+    "vite-plugin-static-copy": "^1.0.2",
+    "sass": "^1.75.0"
   },
   "browserslist": "defaults",
   "scripts": {
@@ -19,7 +19,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@melonjs/debug-plugin": "^14.8.2",
-    "melonjs": "^16.0.0"
+    "@melonjs/debug-plugin": "^14.8.3",
+    "melonjs": "^17.1.0"
   }
 }

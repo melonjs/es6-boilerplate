@@ -38,7 +38,7 @@ device.onReady(() => {
     audio.init("mp3,ogg");
 
     // allow cross-origin for image/texture loading
-    loader.crossOrigin = "anonymous";
+    loader.setOptions({crossOrigin: "anonymous"});
 
     // set and load all resources.
     loader.preload(DataManifest, function () {
