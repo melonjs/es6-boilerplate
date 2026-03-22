@@ -1,3 +1,7 @@
+> **⚠️ This repository is archived.** Use the [TypeScript boilerplate](https://github.com/melonjs/typescript-boilerplate) instead — it works with both TypeScript and JavaScript.
+
+---
+
 # melonJS ES6 Vite Boilerplate
 ![melonJS Logo](https://github.com/melonjs/melonJS/raw/master/media/Banner/Banner%20-%20Billboard%20-%20Original%20Logo%20-%20horizontal.png)
 
